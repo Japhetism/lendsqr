@@ -1,12 +1,34 @@
-.button {
-    width: 447px;
-    height: 48px;
-    border-radius: 8px;
-    border-style: solid;
-    border-color:#39CDCC;
-    opacity: 1;
-    background-color: #39CDCC;
-    color: #ffffff;
+.button-section {
     margin-top: 30px;
     margin-bottom: 30px;
+
+    .button {
+        width: 100%;
+        max-width: 467px;
+        height: 48px;
+        border-radius: 5px;
+        border-style: solid;
+        border-color: #39CDCC;
+        opacity: 1;
+        background-color: #39CDCC;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 768px) {
+    .button {
+        width: 100%;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .button {
+        width: 100%;
+        font-size: 14px;
+    }
 }

@@ -38,19 +38,6 @@
             line-height: 16.39px;
             letter-spacing: 0.1em;
         }
-
-        .button {
-            width: 447px;
-            height: 48px;
-            border-radius: 8px;
-            border-style: solid;
-            border-color:#39CDCC;
-            opacity: 1;
-            background-color: #39CDCC;
-            color: #ffffff;
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
     }
 
     .login-banner {
@@ -76,6 +63,51 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .login-section {
+        display: block;
+        height: auto;
+        padding: 20px;
+        margin-top: 20px;
+
+        .login-form {
+           padding: 0;
+        }
+
+        .login-banner {
+            padding: 0;
+            background: none;
+            margin-bottom: 150px;
+            
+            .pablo {
+                display: none;
+            }
+
+            .logo {
+                display: block;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .login-section {
+        display: block;
+
+        .login-form {
+            padding: 15px;
+        }
+
+        .login-banner {
+            padding: 0;
+
+            .logo {
+                width: 150px;
+            }
         }
     }
 }

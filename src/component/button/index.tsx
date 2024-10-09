@@ -10,7 +10,9 @@ const Button = ({
     type,
 }: IButton) => {
     return (
-        <button type={type} className="button">{name}</button>
+        <div className="button-section">
+            <button type={type} className="button">{name}</button>
+        </div>
     )
 }
 

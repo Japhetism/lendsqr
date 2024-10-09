@@ -3,13 +3,12 @@
     margin-bottom: 30px;
 
     .input {
-        width: 447px;
+        width: 100%;
+        max-width: 447px;
         height: 50px;
         border-radius: 5px;
-        border: 1px;
+        border: 1px solid #e2e4e4;
         opacity: 1;
-        border-color: #e2e4e4;
-        border-style: solid;
         color: #545F7D;
         font-family: "Avenir Next";
         font-size: 14px;
@@ -17,5 +16,18 @@
         line-height: 19.12px;
         text-align: left;
         padding-left: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .input {
+        width: 100%;
+        font-size: 13px;
     }
 }
