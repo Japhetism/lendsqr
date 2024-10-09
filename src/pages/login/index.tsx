@@ -26,8 +26,20 @@ const Login = () => {
                 <span className="login-title">Welcome!</span>
                 <span className="login-description">Enter details to login.</span>
                 <form>
-                    <Input type="email" name="email" placeholder="Email" error={formDataError?.email}  />
-                    <Input type="password" name="password" placeholder="Password" error={formDataError?.password} />
+                    <Input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        error={formDataError?.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    />
+                    <Input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        error={formDataError?.password}
+                        onChange={(e) => setFormData({...formData, password: e.target.value})}
+                    />
                     <div className="forgot-password">
                         <span className="forgot-password">forgot password?</span>
                     </div>

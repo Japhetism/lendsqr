@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "./input.scss";
 
 interface IInput {
@@ -6,6 +6,7 @@ interface IInput {
     placeholder: string;
     name: string;
     error?: string;
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input = ({
@@ -13,6 +14,7 @@ const Input = ({
     placeholder,
     name,
     error,
+    onChange,
 }: IInput) => {
 
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -29,6 +31,7 @@ const Input = ({
                     type={type === "password" && showPassword ? "text" : type}
                     placeholder={placeholder}
                     className="input"
+                    onChange={onChange}
                 />
                 {type === 'password' && (
                     <span
