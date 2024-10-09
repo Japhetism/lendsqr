@@ -1,0 +1,39 @@
+.login-section {
+    display: flex;
+    height: 100vh;
+
+    .login-form {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        padding: 20px;
+    }
+
+    .login-banner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 50px;
+        background: linear-gradient(to right, #FFFEFE 0%, #FFFEFE 90%, #f6f7f6 100%);
+        justify-content: flex-start;
+
+        .logo {
+            width: 173.76px;
+            height: 36px;
+            opacity: 1;
+        }
+
+        .pablo {
+            width: 600px;
+            height: 337.57px;
+            margin-top: auto;
+            margin-bottom: auto;
+            opacity: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
