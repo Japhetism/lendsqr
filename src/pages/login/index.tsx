@@ -8,6 +8,8 @@ const Login = () => {
     const {
         formData,
         formDataError,
+        errorMessage,
+        isLoading,
         setFormData,
         handleLogin,
     } = useViewModel();
@@ -26,6 +28,7 @@ const Login = () => {
                 <span className="login-title">Welcome!</span>
                 <span className="login-description">Enter details to login.</span>
                 <form>
+                    <p className="login-error">{errorMessage}</p>
                     <Input
                         type="email"
                         name="email"
@@ -43,7 +46,12 @@ const Login = () => {
                     <div className="forgot-password">
                         <span className="forgot-password">forgot password?</span>
                     </div>
-                    <Button name="Login" type="button" onclick={handleLogin} />
+                    <Button
+                        name="Login"
+                        type="button"
+                        onclick={handleLogin}
+                        isLoading={isLoading}
+                    />
                 </form>
             </div>
         </div>

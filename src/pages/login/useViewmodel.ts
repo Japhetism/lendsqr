@@ -30,9 +30,12 @@ export const useViewModel = () => {
     const [formData, setFormData] = useState<ILogin>(initialFormData);
     const [formDataError, setFormDataError] = useState<ILogin>(initialFormData);
     const [errorMessage, setErrorMessage] = useState<string>("");
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     
     const handleLogin = async () => {
         setFormDataError(initialFormData);
+        setErrorMessage("");
+        setIsLoading(true);
 
         const validation = loginSchema.safeParse(formData);
 
@@ -45,7 +48,6 @@ export const useViewModel = () => {
         try {
             const response = await dispatch(userLogin(formData)).unwrap();
             if (response?.statusCode === 200) {
-                console.log("user login response data ", response);
                 if (response?.data?.email === formData?.email) {
                     Cookies.set("auth", JSON.stringify(response?.data), {
                         expires: 60 * 9
@@ -55,9 +57,11 @@ export const useViewModel = () => {
                     setErrorMessage("Invalid email and password");
                 }
             } 
+            setIsLoading(false);
         } catch (err) {
             const error = (err as Error).message || defaultErrorMessage
             setErrorMessage(error);
+            setIsLoading(false);
         }
     }
 
@@ -65,6 +69,7 @@ export const useViewModel = () => {
         formData: formData,
         formDataError: formDataError,
         errorMessage: errorMessage,
+        isLoading: isLoading,
         setFormData: setFormData,
         handleLogin: handleLogin,
     }
