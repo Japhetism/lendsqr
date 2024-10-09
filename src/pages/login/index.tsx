@@ -2,6 +2,7 @@ import Button from "../../component/button";
 import Input from "../../component/input";
 import { useViewModel } from "./useViewmodel";
 import "./login.scss"
+import Notification from "../../component/notification";
 
 const Login = () => {
 
@@ -28,7 +29,7 @@ const Login = () => {
                 <span className="login-title">Welcome!</span>
                 <span className="login-description">Enter details to login.</span>
                 <form>
-                    <p className="login-error">{errorMessage}</p>
+                    <Notification message={errorMessage} hasError={Boolean(errorMessage)} />
                     <Input
                         type="email"
                         name="email"
