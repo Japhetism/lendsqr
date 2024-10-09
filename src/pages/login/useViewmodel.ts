@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { z } from "zod";
 import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import Cookies from "js-cookie";
 import { userLogin } from "../../redux/auth";
 import { AppDispatch } from "../../redux/store";
 import { formatFormDataErrors } from "../../utils/formatter";
@@ -23,6 +25,7 @@ const loginSchema = z.object({
 
 export const useViewModel = () => {
     const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState<ILogin>(initialFormData);
     const [formDataError, setFormDataError] = useState<ILogin>(initialFormData);
@@ -43,6 +46,14 @@ export const useViewModel = () => {
             const response = await dispatch(userLogin(formData)).unwrap();
             if (response?.statusCode === 200) {
                 console.log("user login response data ", response);
+                if (response?.data?.email === formData?.email) {
+                    Cookies.set("auth", JSON.stringify(response?.data), {
+                        expires: 60 * 9
+                    });
+                    navigate("/dashboard");
+                } else {
+                    setErrorMessage("Invalid email and password");
+                }
             } 
         } catch (err) {
             const error = (err as Error).message || defaultErrorMessage
