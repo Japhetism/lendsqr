@@ -1,14 +1,56 @@
 .login-section {
     display: flex;
     height: 100vh;
+    font-family: 'Avenir Next', Courier, monospace;
 
     .login-form {
         flex: 1;
         display: flex;
         justify-content: center;
-        align-items: center;
+        flex-direction: column;
         background-color: #ffffff;
-        padding: 20px;
+        padding: 100px;
+
+        .login-title {
+            color: #213F7D;
+            font-family: "Avenir Next";
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 54.64px;
+            letter-spacing: -0.04em;
+            margin-bottom: 10px;
+        }
+
+        .login-description {
+            color: #545F7D;
+            font-family: "Avenir Next";
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 27.32px;
+        }
+
+        .forgot-password {
+            color: #39CDCC;
+            text-transform: uppercase;
+            font-family: Avenir Next;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 16.39px;
+            letter-spacing: 0.1em;
+        }
+
+        .button {
+            width: 447px;
+            height: 48px;
+            border-radius: 8px;
+            border-style: solid;
+            border-color:#39CDCC;
+            opacity: 1;
+            background-color: #39CDCC;
+            color: #ffffff;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
     }
 
     .login-banner {

@@ -1,3 +1,5 @@
+import Button from "../../component/button";
+import Input from "../../component/input";
 import "./login.scss"
 
 const Login = () => {
@@ -12,12 +14,15 @@ const Login = () => {
                 </div>
             </div>
             <div className="login-form">
-                <h2>Welcome!</h2>
-                <h4>Enter details to login.</h4>
+                <span className="login-title">Welcome!</span>
+                <span className="login-description">Enter details to login.</span>
                 <form>
-                    <div className="form-group">
-                    <input type="text" id="username" required />
+                    <Input type="email" name="email" placeholder="Email"  />
+                    <Input type="password" name="password" placeholder="Password" />
+                    <div className="forgot-password">
+                        <span className="forgot-password">forgot password?</span>
                     </div>
+                    <Button name="Login" type="button" />
                 </form>
             </div>
         </div>
