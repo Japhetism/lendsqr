@@ -1,33 +1,33 @@
 .input-section {
+    position: relative;
+    width: 100%;
+    max-width: 447px;
     margin-top: 30px;
     margin-bottom: 30px;
 
     .input {
         width: 100%;
-        max-width: 447px;
         height: 50px;
+        padding: 0 10px;
         border-radius: 5px;
         border: 1px solid #e2e4e4;
-        opacity: 1;
         color: #545F7D;
-        font-family: "Avenir Next";
+
+        &::placeholder {
+            color: #aaa;
+        }
+    }
+
+    .toggle-password {
+        text-transform: uppercase;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #39CDCC;
+        cursor: pointer;
         font-size: 14px;
-        font-weight: 400;
-        line-height: 19.12px;
-        text-align: left;
-        padding-left: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .input {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .input {
-        width: 100%;
-        font-size: 13px;
+        font-weight: 600;
+        pointer-events: all; 
     }
 }

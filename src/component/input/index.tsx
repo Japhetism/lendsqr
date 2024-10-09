@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./input.scss";
 
 interface IInput {
@@ -11,14 +12,31 @@ const Input = ({
     placeholder,
     name,
 }: IInput) => {
+
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+
+    const handleToggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    }
+
     return (
         <div className="input-section">
             <input
                 name={name}
-                type={type}
+                type={type === "password" && showPassword ? "text" : type}
                 placeholder={placeholder}
                 className="input"
             />
+            {type === 'password' && (
+                <span 
+                    className="toggle-password" 
+                    onClick={handleToggleShowPassword}
+                    onKeyDown={(e) => e.key === 'Enter' && handleToggleShowPassword()}
+                    tabIndex={0}
+                >
+                    {showPassword ? 'Hide' : 'Show'}
+                </span>
+            )}
         </div>
     )
 }
