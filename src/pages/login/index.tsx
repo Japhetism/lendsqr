@@ -1,8 +1,17 @@
 import Button from "../../component/button";
 import Input from "../../component/input";
+import { useViewModel } from "./useViewmodel";
 import "./login.scss"
 
 const Login = () => {
+
+    const {
+        formData,
+        formDataError,
+        setFormData,
+        handleLogin,
+    } = useViewModel();
+
     return (
         <div className="login-section">
             <div className="login-banner">
@@ -17,12 +26,12 @@ const Login = () => {
                 <span className="login-title">Welcome!</span>
                 <span className="login-description">Enter details to login.</span>
                 <form>
-                    <Input type="email" name="email" placeholder="Email"  />
-                    <Input type="password" name="password" placeholder="Password" />
+                    <Input type="email" name="email" placeholder="Email" error={formDataError?.email}  />
+                    <Input type="password" name="password" placeholder="Password" error={formDataError?.password} />
                     <div className="forgot-password">
                         <span className="forgot-password">forgot password?</span>
                     </div>
-                    <Button name="Login" type="button" />
+                    <Button name="Login" type="button" onclick={handleLogin} />
                 </form>
             </div>
         </div>

@@ -5,12 +5,14 @@ interface IInput {
     type: 'text' | 'email' | 'password' | 'numeric' | 'date';
     placeholder: string;
     name: string;
+    error?: string;
 }
 
 const Input = ({
     type,
     placeholder,
     name,
+    error,
 }: IInput) => {
 
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -20,23 +22,26 @@ const Input = ({
     }
 
     return (
-        <div className="input-section">
-            <input
-                name={name}
-                type={type === "password" && showPassword ? "text" : type}
-                placeholder={placeholder}
-                className="input"
-            />
-            {type === 'password' && (
-                <span 
-                    className="toggle-password" 
-                    onClick={handleToggleShowPassword}
-                    onKeyDown={(e) => e.key === 'Enter' && handleToggleShowPassword()}
-                    tabIndex={0}
-                >
-                    {showPassword ? 'Hide' : 'Show'}
-                </span>
-            )}
+        <div className="input-container">
+             <div className="input-section">
+                <input
+                    name={name}
+                    type={type === "password" && showPassword ? "text" : type}
+                    placeholder={placeholder}
+                    className="input"
+                />
+                {type === 'password' && (
+                    <span
+                        className="toggle-password" 
+                        onClick={handleToggleShowPassword}
+                        onKeyDown={(e) => e.key === 'Enter' && handleToggleShowPassword()}
+                        tabIndex={0}
+                    >
+                        {showPassword ? 'Hide' : 'Show'}
+                    </span>
+                )}
+            </div>
+        {error && ( <span className="input-error">{error}</span>)}
         </div>
     )
 }
