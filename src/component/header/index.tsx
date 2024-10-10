@@ -17,7 +17,10 @@ const Header = () => {
                 <div>
                     <img src="/images/logo.png" alt="logo" className="logo" />
                 </div>
-                <SearchInput placeholder="Search for anything" onSearch={() => {}} />
+                <div className="search">
+                    <SearchInput placeholder="Search for anything" onSearch={() => {}} />
+                </div>
+                
             </div>
             <div className="user-section">
                 <span className="doc">DOCS</span>

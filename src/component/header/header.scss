@@ -5,12 +5,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 30px;
+    position: relative;
 
     .logo-search-section {
         width: 50%;
         display: flex;
         align-items: center;
-        gap: 150px;
+        gap: 100px;
 
         .logo {
             width: 144.8px;
@@ -83,6 +84,46 @@
                     }
                 }
             }
+        }
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: row;
+        height: auto;
+        padding: 10px;
+
+        .logo-search-section {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .logo {
+                width: 100px;
+                height: auto;
+            }
+
+            .search {
+                display: none;
+            }
+        }
+
+        .user-section {
+            width: 100%;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+
+        .doc, .username {
+            display: none;
+        }
+
+        .user-options {
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-container {
+            right: 0;
         }
     }
 }
