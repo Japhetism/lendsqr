@@ -11,3 +11,5 @@ export const formatFormDataErrors = (error: ZodError, initialFormData: any): typ
   });
   return {...initialFormData, ...errors};
 };
+
+export const formatNumber = (num: number) => num.toLocaleString();

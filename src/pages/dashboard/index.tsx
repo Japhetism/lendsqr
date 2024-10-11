@@ -1,6 +1,7 @@
 import Layout from "../../component/layout";
 import "./dashboard.scss";
 
+
 const Dashboard = () => {
     return (
         <Layout title="Dashboard">
