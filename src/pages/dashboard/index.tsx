@@ -43,7 +43,7 @@ const Dashboard = () => {
                 <CardGroup data={formatStatisticsToArray(dashboardData.statistics)} /> 
                 <div className="dashboard__financial">
                     <div className="dashboard__financial__performance">
-                        <span className="dashboard__financial__title">Financial Performance</span>
+                        <span className="title">Financial Performance</span>
                         <div className="dashboard__financial__performance__chart">
                             <Chart
                                 chartType="Line"
@@ -55,7 +55,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className="dashboard__financial__revenue">
-                        <span className="dashboard__financial__title">Total Revenue</span>
+                        <span className="title">Total Revenue</span>
                         <Chart
                             chartType="PieChart"
                             data={pieChartData}
@@ -64,6 +64,9 @@ const Dashboard = () => {
                             height={"280px"}
                         />
                     </div>
+                </div>
+                <div className="dashboard__transactions">
+                    <span className="title">Recent Transactions</span>
                 </div>
             </div>
         </Layout>
