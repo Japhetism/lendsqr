@@ -3,4 +3,9 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     flex-direction: row;
+    gap: 45px;
+
+    @media (max-width: 768px) {
+        gap: 20px;
+    }
 }
