@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { UsersIcon } from "../../assets/svg/usersIcon";
 
 interface IMenuItem {
     label: string;
