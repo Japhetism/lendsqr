@@ -1,0 +1,40 @@
+.dashboard {
+
+    &__financial {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 420px;
+        gap: 20px;
+
+        &__title {
+            font-family: "Work Sans";
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 28.15px;
+            text-align: left;
+            color: #213F7D;
+        }
+
+        &__performance {
+            flex: 6;
+            background-color: #ffffff;
+            padding: 30px;
+
+            &__chart {
+                margin-top: 50px;
+            }
+        }
+
+        &__revenue {
+            flex: 4;
+            background-color: #ffffff;
+            padding: 30px;
+        }
+    }
+
+    .title {
+        
+    }
+}

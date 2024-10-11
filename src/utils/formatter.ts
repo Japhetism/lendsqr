@@ -6,6 +6,19 @@ type FormattedErrors = {
   [key: string]: string;
 };
 
+interface PerformanceData {
+  jan: number;
+  feb: number;
+  mar: number;
+  apr: number;
+  may: number;
+  jun: number;
+  jul: number;
+  aug: number;
+  sep: number;
+  oct: number;
+}
+
 export const formatFormDataErrors = (error: ZodError, initialFormData: any): typeof initialFormData => {
   const errors: FormattedErrors = {};
   error.errors.forEach((e) => {
@@ -25,4 +38,13 @@ export const formatStatisticsToArray = (statistics: Record<string, number>): ICa
     backgroundColor: statisticColors[index % statisticColors.length],
     icon: statisticIcons[index % statisticIcons.length]
   }));
+}
+
+export const formatPerformanceToArray = (performance: PerformanceData): (string | number)[][] => {
+  return [
+      ["", ""],
+      ...Object.entries(performance).map(([key, value]) => [
+          key.charAt(0).toUpperCase() + key.slice(1), value
+      ])
+  ];
 }
