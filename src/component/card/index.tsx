@@ -1,4 +1,3 @@
-import { UserColoredIcon } from "../../assets/svg/usersColoredIcon";
 import "./card.scss";
 
 interface ICard {
