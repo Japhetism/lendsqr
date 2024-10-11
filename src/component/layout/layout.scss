@@ -28,5 +28,8 @@
         color: #213F7D;
         margin-bottom: 30px;
     }
-    
+
+    @media (max-width: 768px) {
+        padding: 20px;
+    }
 }
