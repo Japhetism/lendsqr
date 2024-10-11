@@ -24,7 +24,7 @@ export const NotificationIcon = () => (
             "
             fill="#213F7D"
             stroke="#213F7D"
-            stroke-width="0.4"
+            strokeWidth="0.4"
         />
     </svg>
 
