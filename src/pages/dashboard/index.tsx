@@ -22,7 +22,7 @@ const dashboardData = {
         aug: 9928303090,
         sep: 9982380300,
         oct: 9939380300
-    }
+    },
 }
   
 const options = {
@@ -30,6 +30,13 @@ const options = {
 };
 
 const Dashboard = () => {
+
+    const pieChartData = [
+        ["", ""],
+        ["Savings", dashboardData.statistics.totalSavings],
+        ["Loans", dashboardData.statistics.totalLoans]
+    ]
+
     return (
         <Layout title="Dashboard">
             <div className="dashboard">
@@ -49,6 +56,13 @@ const Dashboard = () => {
                     </div>
                     <div className="dashboard__financial__revenue">
                         <span className="dashboard__financial__title">Total Revenue</span>
+                        <Chart
+                            chartType="PieChart"
+                            data={pieChartData}
+                            options={options}
+                            width={"100%"}
+                            height={"280px"}
+                        />
                     </div>
                 </div>
             </div>
