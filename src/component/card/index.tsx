@@ -1,11 +1,5 @@
+import { ICard } from "../../interfaces/card";
 import "./card.scss";
-
-interface ICard {
-    title: string;
-    value: string;
-    backgroundColor?: string;
-    icon: React.FC<React.SVGProps<SVGSVGElement>>;
-}
 
 const Card = ({
     title,
