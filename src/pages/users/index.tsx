@@ -1,10 +1,10 @@
+import Card from "../../component/card";
+import Layout from "../../component/layout";
+import { formatNumber } from "../../utils/formatter";
 import { LoanColoredIcon } from "../../assets/svg/loanColoredIcon";
 import { MoneyColoredIcon } from "../../assets/svg/moneyColoredIcon";
 import { UserColoredIcon } from "../../assets/svg/usersColoredIcon";
 import { UserGroupIcon } from "../../assets/svg/usersGroupIcon";
-import Card from "../../component/card";
-import Layout from "../../component/layout";
-import { formatNumber } from "../../utils/formatter";
 import "./users.scss";
 
 const usersData = {
@@ -17,7 +17,9 @@ const usersData = {
 }
 
 const Users = () => {
+    
     const { users, activeUsers, usersWithLoans, usersWithSavings } = usersData.statistics;
+    
     return (
         <Layout title="Users">
             <div className="users">
