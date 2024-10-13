@@ -29,6 +29,10 @@
         height: 620px;
         background-color: #ffffff;
         padding: 40px;
+
+        &__table {
+            margin-top: 20px;
+        }
     }
 
     .title {
@@ -56,3 +60,33 @@
         }
     }
 }
+
+$status-colors: (
+    pending: (
+        color: #E9B200,
+        background-color: #FFFFE0,
+    ),
+    successful: (
+        color: #39CD62,
+        background-color: #F9FFFD,
+    ),
+    failed: (
+        color: #E4033B,
+        background-color: #FECED4,
+    ),
+);
+
+.status-cell {
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-align: center;
+    text-transform: capitalize;
+
+    @each $status, $styles in $status-colors {
+        &.status-#{$status} {
+            color: map-get($styles, color);
+            background-color: map-get($styles, background-color);
+        }
+    }
+}
+
