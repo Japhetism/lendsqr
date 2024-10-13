@@ -70,7 +70,14 @@ const columns: ColumnDef<ITransactions, any>[] = [
         header: () => 'Phone Number',
     }),
     columnHelper.accessor('date', {
-        cell: info => info.getValue(),
+        cell: info => {
+            const dateValue = new Date(info.getValue());
+            const day = String(dateValue.getDate()).padStart(2, '0');
+            const month = String(dateValue.getMonth() + 1).padStart(2, '0');
+            const year = dateValue.getFullYear();
+            
+            return `${day}-${month}-${year}`;
+        },
         header: () => 'Date',
     }),
     columnHelper.accessor('amount', {
