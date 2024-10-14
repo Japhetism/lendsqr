@@ -1,0 +1,58 @@
+.dashboard-loader {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    &__card {
+        width: 100%;
+        height: 150px;
+        background: #e0e0e0;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        animation: pulse 1.5s infinite;
+    }
+
+    &__chart {
+        width: 100%;
+        height: 280px;
+        background: #e0e0e0;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        animation: pulse 1.5s infinite;
+    }
+
+    &__revenue {
+        width: 100%;
+        height: 280px;
+        background: #e0e0e0;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        animation: pulse 1.5s infinite;
+    }
+
+    &__transactions {
+        display: flex;
+        flex-direction: column;
+
+        &__transaction-item {
+            width: 100%;
+            height: 50px;
+            background: #e0e0e0;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            animation: pulse 1.5s infinite;
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            background-color: #e0e0e0;
+        }
+        50% {
+            background-color: #c0c0c0;
+        }
+        100% {
+            background-color: #e0e0e0;
+        }
+    }
+}

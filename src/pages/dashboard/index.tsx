@@ -3,42 +3,10 @@ import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
 import Layout from "../../component/layout";
 import CardGroup from "../../component/card/cardGroup";
 import DataTable from "../../component/table";
+import DashboardLoader from "../../component/loader/dashboardLoader";
 import { formatPerformanceToArray, formatStatisticsToArray } from "../../utils/formatter";
+import { useViewModel } from "./useViewmodel";
 import "./dashboard.scss";
-
-const dashboardData = {
-    statistics: {
-        totalTransactions: 1242453,
-        totalSettlements: 242453,
-        totalLoans: 46732453,
-        totalSavings: 109822453,
-    },
-    performance: {
-        jan: 9240000000,
-        feb: 8738430000,
-        mar: 9600000000,
-        apr: 8038400000,
-        may: 8737083300,
-        jun: 8920308380,
-        jul: 9802939000,
-        aug: 9928303090,
-        sep: 9982380300,
-        oct: 9939380300
-    },
-    transactions: [
-        { customerName: "James Caleb", email: "jamescaleb@gmail.com", phoneNumber: "07098290191", customerId: "55555", date: "2024-10-10", amount: 374893, status: "pending" },
-        { customerName: "James Caleb", email: "jamescaleb@gmail.com", phoneNumber: "07098290191", customerId: "55555", date: "2024-10-10", amount: 374893, status: "successful" },
-        { customerName: "James Caleb", email: "jamescaleb@gmail.com", phoneNumber: "07098290191", customerId: "55555", date: "2024-10-10", amount: 374893, status: "pending" },
-        { customerName: "James Caleb", email: "jamescaleb@gmail.com", phoneNumber: "07098290191", customerId: "55555", date: "2024-10-10", amount: 374893, status: "failed" },
-        { customerName: "James Caleb", email: "jamescaleb@gmail.com", phoneNumber: "07098290191", customerId: "55555", date: "2024-10-10", amount: 374893, status: "successful" },
-        { customerName: "James Caleb", email: "jamescaleb@gmail.com", phoneNumber: "07098290191", customerId: "55555", date: "2024-10-10", amount: 374893, status: "successful" },
-        { customerName: "James Caleb", email: "jamescaleb@gmail.com", phoneNumber: "07098290191", customerId: "55555", date: "2024-10-10", amount: 374893, status: "failed" },
-        { customerName: "James Caleb", email: "jamescaleb@gmail.com", phoneNumber: "07098290191", customerId: "55555", date: "2024-10-10", amount: 374893, status: "pending" },
-        { customerName: "James Caleb", email: "jamescaleb@gmail.com", phoneNumber: "07098290191", customerId: "55555", date: "2024-10-10", amount: 374893, status: "pending" },
-        { customerName: "James Caleb", email: "jamescaleb@gmail.com", phoneNumber: "07098290191", customerId: "55555", date: "2024-10-10", amount: 374893, status: "pending" }
-    ]
-    
-}
 
 interface ITransactions {
     customerName: string;
@@ -109,53 +77,68 @@ const options = {
 
 const Dashboard = () => {
 
+    const {
+        isLoading,
+        errorMessage,
+       dashboardData,
+    } = useViewModel();
+
+    const statistics = dashboardData?.statistics || {};
+    const performance = dashboardData?.performance || {};
+    const transactions = dashboardData?.transactions || [];
+
     const pieChartData = [
         ["", ""],
-        ["Savings", dashboardData.statistics.totalSavings],
-        ["Loans", dashboardData.statistics.totalLoans]
-    ]
+        ["Savings", statistics.totalSavings || 0],
+        ["Loans", statistics.totalLoans || 0]
+    ];
 
     return (
         <Layout title="Dashboard">
-            <div className="dashboard">
-                <CardGroup data={formatStatisticsToArray(dashboardData.statistics)} /> 
-                <div className="dashboard__financial">
-                    <div className="dashboard__financial__performance">
-                        <span className="title">Financial Performance</span>
-                        <div className="dashboard__financial__performance__chart">
+            {isLoading 
+            ?
+                <DashboardLoader /> 
+            :
+                <div className="dashboard">
+                    <CardGroup data={formatStatisticsToArray(statistics)} /> 
+                    <div className="dashboard__financial">
+                        <div className="dashboard__financial__performance">
+                            <span className="title">Financial Performance</span>
+                            <div className="dashboard__financial__performance__chart">
+                                <Chart
+                                    chartType="Line"
+                                    width="100%"
+                                    height="280px"
+                                    data={formatPerformanceToArray(performance)}
+                                    options={options}
+                                />
+                            </div>
+                        </div>
+                        <div className="dashboard__financial__revenue">
+                            <span className="title">Total Revenue</span>
                             <Chart
-                                chartType="Line"
-                                width="100%"
-                                height="280px"
-                                data={formatPerformanceToArray(dashboardData.performance)}
+                                chartType="PieChart"
+                                data={pieChartData}
                                 options={options}
+                                width={"100%"}
+                                height={"280px"}
                             />
                         </div>
                     </div>
-                    <div className="dashboard__financial__revenue">
-                        <span className="title">Total Revenue</span>
-                        <Chart
-                            chartType="PieChart"
-                            data={pieChartData}
-                            options={options}
-                            width={"100%"}
-                            height={"280px"}
-                        />
+                    <div className="dashboard__transactions">
+                        <span className="title">Recent Transactions</span>
+                        <div className="dashboard__transactions__table">
+                            <DataTable
+                                data={transactions}
+                                columns={columns}
+                                initialPageSize={20}
+                                showPagination={false}
+                            />
+                        </div>
+                        
                     </div>
                 </div>
-                <div className="dashboard__transactions">
-                    <span className="title">Recent Transactions</span>
-                    <div className="dashboard__transactions__table">
-                        <DataTable
-                            data={dashboardData.transactions}
-                            columns={columns}
-                            initialPageSize={20}
-                            showPagination={false}
-                        />
-                    </div>
-                    
-                </div>
-            </div>
+            }
         </Layout>
     );
 }
