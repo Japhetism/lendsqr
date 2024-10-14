@@ -108,7 +108,7 @@ const DataTable = <T extends RowData>({ data, columns, initialPageSize, showPagi
                     ))}
                 </tbody>
             </table>
-            {/* {showPagination && (
+            {showPagination && (
                 <div className="pagination">
                     <div className="info">
                         <span>Showing</span>
@@ -131,7 +131,7 @@ const DataTable = <T extends RowData>({ data, columns, initialPageSize, showPagi
                         ))}
                     </div>
                 </div>
-            )} */}
+            )}
         </div>
     );
 };

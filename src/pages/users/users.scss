@@ -4,4 +4,46 @@
         display: flex;
         justify-content: space-between;
     }
+
+    &__users-table-container {
+        background-color: #ffffff;
+        margin-top: 50px;
+
+        &__datatable {
+            padding: 40px;
+        }
+    }
+}
+
+$status-colors: (
+    inactive: (
+        color: #545F7D,
+        background-color: #D3D9E9,
+    ),
+    pending: (
+        color: #E9B200,
+        background-color: #FFFFE0,
+    ),
+    active: (
+        color: #39CD62,
+        background-color: #F9FFFD,
+    ),
+    blacklisted: (
+        color: #E4033B,
+        background-color: #FECED4,
+    ),
+);
+
+.status-cell {
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-align: center;
+    text-transform: capitalize;
+
+    @each $status, $styles in $status-colors {
+        &.status-#{$status} {
+            color: map-get($styles, color);
+            background-color: map-get($styles, background-color);
+        }
+    }
 }
