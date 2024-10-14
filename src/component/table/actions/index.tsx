@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import "./actions.scss";
 
 const TableActions = ({ user, isOpen, onToggle }: any) => {
+    const navigate = useNavigate();
+
     const handleView = (user: any) => {
         console.log("Viewing user:", user);
+        navigate(`/users/${user?.id}`);
     };
 
     const handleBlacklist = (user: any) => {
