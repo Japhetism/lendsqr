@@ -1,0 +1,96 @@
+.tab-container {
+    height: auto;
+    background-color: #ffffff;
+    padding: 40px 40px 0px 40px;
+
+    .tab-information {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 40px;
+        margin-bottom: 50px;
+
+        &__info-section {
+            border-right: 1px solid #F0F0F0;
+            padding: 0px 40px 0px 0px;
+        }
+
+        &__icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; 
+
+            &__icon {
+                width: 100px;
+                height: 100px;
+                border-radius: 100px;
+                opacity: 0.16px;
+                background-color: #A1C6EA;
+                display: flex;
+                justify-content: center;
+                align-items: center;  
+            }
+
+            &__user-details {
+                &__name {
+                    font-family: "Work Sans";
+                    font-size: 22px;
+                    font-weight: 500;
+                    line-height: 25.81px;
+                    text-align: left;
+                    color: #213F7D;
+                }
+
+                &__info {
+                    font-family: "Work Sans";
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 16.42px;
+                    text-align: left;
+                    color: #545F7D;
+                }
+            }
+        }
+    }
+
+    .tabs {
+        width: 100%;
+        border: none;
+        border-radius: 4px;
+      
+        .tabHeaders {
+          display: flex;
+
+          .tab {
+            flex: 1;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: "SF Compact Text";
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 19.09px;
+            text-align: center;
+    
+      
+          }
+      
+          .active {
+            border-bottom: 2px solid #39CDCC;
+            font-weight: bold;
+            color: #39CDCC;
+            font-family: "Work Sans";
+          }
+        }
+      
+        // .tabContent {
+        //   padding: 20px;
+        // }
+      }
+     
+}
+
+ 
