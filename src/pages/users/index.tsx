@@ -1,3 +1,6 @@
+import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
+import DataTable from "../../component/table";
+import TableActions from "../../component/table/actions";
 import Card from "../../component/card";
 import Layout from "../../component/layout";
 import { formatNumber } from "../../utils/formatter";
@@ -7,68 +10,79 @@ import { UserColoredIcon } from "../../assets/svg/usersColoredIcon";
 import { UserGroupIcon } from "../../assets/svg/usersGroupIcon";
 import { User, allUsers } from "../../utils/helper";
 import "./users.scss";
-import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
-import DataTable from "../../component/table";
+import { useState } from "react";
 
 const usersData = {
     statistics: {
         users: 2453,
         activeUsers: 2453,
         usersWithLoans: 12453,
-        usersWithSavings: 102453
-    }
-}
+        usersWithSavings: 102453,
+    },
+};
 
 const columnHelper = createColumnHelper<User>();
 
-const columns: ColumnDef<User, any>[] = [
-    columnHelper.accessor('organization', {
-        cell: info => info.getValue(),
-        header: () => 'Organization',
-    }),
-    columnHelper.accessor('username', {
-        cell: info => info.getValue(),
-        header: () => 'Username',
-    }),
-    columnHelper.accessor('email', {
-        cell: info => info.getValue(),
-        header: () => 'Email',
-    }),
-    columnHelper.accessor('phoneNumber', {
-        cell: info => info.getValue(),
-        header: () => 'Phone Number',
-    }),
-    columnHelper.accessor('dateJoined', {
-        cell: info => {
-            const dateValue = new Date(info.getValue());
-            const day = String(dateValue.getDate()).padStart(2, '0');
-            const month = String(dateValue.getMonth() + 1).padStart(2, '0');
-            const year = dateValue.getFullYear();
-            
-            return `${day}-${month}-${year}`;
-        },
-        header: () => 'Date Joined',
-    }),
-    columnHelper.accessor('status', {
-        cell: info => {
-            const status = info.getValue();
-            
-            return (
-                <div className={`status-cell status-${status}`}>
-                    {status}
-                </div>
-            );
-        },
-        header: () => 'Status',
-    }),
-];
-
 const Users = () => {
+    const [openDropdownId, setOpenDropdownId] = useState<number | null>(null);
 
-    console.log("users are ", allUsers);
+    const handleToggleDropdown = (id: number) => {
+        setOpenDropdownId(openDropdownId === id ? null : id);
+    };
+
+    const columns: ColumnDef<User, any>[] = [
+        columnHelper.accessor('organization', {
+            cell: info => info.getValue(),
+            header: () => 'Organization',
+        }),
+        columnHelper.accessor('username', {
+            cell: info => info.getValue(),
+            header: () => 'Username',
+        }),
+        columnHelper.accessor('email', {
+            cell: info => info.getValue(),
+            header: () => 'Email',
+        }),
+        columnHelper.accessor('phoneNumber', {
+            cell: info => info.getValue(),
+            header: () => 'Phone Number',
+        }),
+        columnHelper.accessor('dateJoined', {
+            cell: info => {
+                const dateValue = new Date(info.getValue());
+                const day = String(dateValue.getDate()).padStart(2, '0');
+                const month = String(dateValue.getMonth() + 1).padStart(2, '0');
+                const year = dateValue.getFullYear();
+                return `${day}-${month}-${year}`;
+            },
+            header: () => 'Date Joined',
+        }),
+        columnHelper.accessor('status', {
+            cell: info => {
+                const status = info.getValue();
+                return (
+                    <div className={`status-cell status-${status}`}>
+                        {status}
+                    </div>
+                );
+            },
+            header: () => 'Status',
+        }),
+        columnHelper.accessor('id', {
+            cell: info => (
+                <TableActions 
+                    user={info.row.original} 
+                    isOpen={info.row.original.id === openDropdownId} 
+                    onToggle={() => handleToggleDropdown(info.row.original.id)} 
+                />
+            ),
+            header: () => '',
+        }),
+    ];
     
+
     const { users, activeUsers, usersWithLoans, usersWithSavings } = usersData.statistics;
-    
+
     return (
         <Layout title="Users">
             <div className="users">
@@ -111,6 +125,6 @@ const Users = () => {
             </div>
         </Layout>
     );
-}
+};
 
 export default Users;
