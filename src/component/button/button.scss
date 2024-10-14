@@ -1,0 +1,56 @@
+.button-section {
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    .button {
+        width: 100%;
+        max-width: 467px;
+        height: 48px;
+        border-radius: 5px;
+        border-style: solid;
+        border-color: #39CDCC;
+        opacity: 1;
+        background-color: #39CDCC;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+
+        .loading-dots {
+            display: inline-block;
+            animation: dot-blink 1s steps(3, end) infinite;
+            margin-left: 5px;
+        }
+    }
+}
+
+@keyframes dot-blink {
+    0%, 20% {
+        opacity: 1;
+    }
+    20%, 50% {
+        opacity: 0;
+    }
+    50%, 70% {
+        opacity: 1;
+    }
+    70%, 100% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .button {
+        width: 100%;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .button {
+        width: 100%;
+        font-size: 14px;
+    }
+}

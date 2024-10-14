@@ -1,0 +1,35 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    background-color: #f6f7f6;
+}
+
+.header {
+    z-index: 10; 
+    position: relative;
+}
+
+.content {
+    flex: 1;
+    padding: 60px;
+
+    &__title {
+        font-family: "Work Sans";
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 28.15px;
+        text-align: left;
+        color: #213F7D;
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 20px;
+    }
+}

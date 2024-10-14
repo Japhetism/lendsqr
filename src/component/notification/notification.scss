@@ -1,0 +1,15 @@
+.notification-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px 15px;
+    color: #ffffff;
+    border-radius: 5px;
+
+    &.error-notification {
+        background-color: #D22B2B;
+    }
+
+    &.success-notification {
+        background-color: #AFE1AF;
+    }
+}
